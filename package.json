@@ -1,5 +1,6 @@
 {
 	"name": "starter-react-webpack",
+	"description": "Custom Webpack 3 client & server hot reload React starter app",
 	"version": "0.1.0",
 	"engines": {
 		"node": ">=6.11.1 <7.0.0",
