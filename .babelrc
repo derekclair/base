@@ -1,0 +1,31 @@
+{
+	"presets": [
+		"env",
+		"es2017",
+		"flow",
+		"react",
+		"stage-0"
+	],
+	"env": {
+		"test": {
+			"plugins": [
+				"istanbul"
+			]
+		}
+	},
+	"plugins": [
+		"react-hot-loader/babel",
+		[
+			"transform-class-properties",
+			{
+				"spec": true
+			}
+		]
+	],
+	"parserOpts": {
+		"plugins": [
+			"jsx",
+			"flow"
+		]
+	}
+}

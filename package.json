@@ -1,0 +1,61 @@
+{
+	"name": "starter-react-webpack",
+	"version": "0.1.0",
+	"engines": {
+		"node": ">=6.11.1 <7.0.0",
+		"npm": "~3.10.10"
+	},
+	"main": "main.js",
+	"scripts": {
+		"start": "node main.js --exec babel-node",
+		"build": "",
+		"lint": "eslint ."
+	},
+	"dependencies": {
+		"babel-core": "^6.25.0",
+		"babel-eslint": "^7.2.3",
+		"babel-loader": "^7.1.1",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-preset-env": "^1.6.0",
+		"babel-preset-es2017": "^6.24.1",
+		"babel-preset-flow": "^6.23.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"body-parser": "^1.17.2",
+		"chalk": "^2.0.1",
+		"css-loader": "^0.28.4",
+		"extract-text-webpack-plugin": "^3.0.0",
+		"fs-extra": "^4.0.0",
+		"html-webpack-plugin": "^2.29.0",
+		"node-sass-chokidar": "^0.0.3",
+		"postcss-loader": "^2.0.6",
+		"prop-types": "^15.5.10",
+		"react": "^15.6.1",
+		"react-dom": "^15.6.1",
+		"react-hot-loader": "next",
+		"sass-loader": "^6.0.6",
+		"sass-resources-loader": "^1.3.0",
+		"webpack": "^3.3.0",
+		"webpack-hot-middleware": "^2.18.2",
+		"webpack-hot-server-middleware": "^0.1.0",
+		"webpack-node-externals": "^1.6.0"
+	},
+	"devDependencies": {
+		"eslint": "^3.19.0",
+		"eslint-config-airbnb": "^15.0.2",
+		"eslint-plugin-babel": "^4.1.1",
+		"eslint-plugin-flowtype": "^2.35.0",
+		"eslint-plugin-import": "^2.7.0",
+		"eslint-plugin-jsx-a11y": "^5.1.1",
+		"eslint-plugin-react": "^7.1.0",
+		"eslint-plugin-security": "^1.4.0",
+		"flow-bin": "^0.51.1",
+		"friendly-errors-webpack-plugin": "^1.6.1",
+		"progress-bar-webpack-plugin": "^1.10.0",
+		"webpack-bundle-analyzer": "^2.8.3",
+		"webpack-dev-middleware": "^1.11.0"
+	},
+	"author": "Derek Clair <derek@derekclair.com>",
+	"repository": "git@github.com:basement-lab/starter-react.git",
+	"private": true
+}
