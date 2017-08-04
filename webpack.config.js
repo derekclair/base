@@ -103,12 +103,14 @@ const SERVER_CONFIG = {
 	output: {
 		path: DIST_DIR,
 		filename: '[name].bundle].js',
+		publicPath: '/',
 	},
 
 	devtool: 'source-map',
 
 	externals: fs.readdirSync('node_modules')
-		.filter(x => !x.includes('.bin') && !x.includes('react-loadable'))
+		// .filter(x => !x.includes('.bin') && !x.includes('react-loadable'))
+		.filter(x => !x.includes('.bin'))
 		.reduce((obj, mod) => {
 			obj[mod] = `commonjs ${mod}`; // eslint-disable-line
 			return obj;
