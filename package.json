@@ -81,6 +81,9 @@
 		"webpack-hot-server",
 		"react",
 		"react-hot-loader",
+		"graphql",
+		"graphql-subscriptions",
+		"apollo",
 		"babel",
 		"flow"
 	],
