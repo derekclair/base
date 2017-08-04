@@ -1,5 +1,5 @@
 {
-	"name": "starter-react-webpack",
+	"name": "custom-base",
 	"description": "Custom Webpack 3 client & server hot reload React starter app",
 	"version": "0.1.0",
 	"engines": {
@@ -73,6 +73,16 @@
 		"webpack-dev-middleware": "^1.11.0"
 	},
 	"author": "Derek Clair <derek@derekclair.com>",
-	"repository": "git@github.com:basement-lab/starter-react.git",
+	"repository": "git@github.com:basement-lab/custom-base.git",
+	"keywords": [
+		"boilerplate",
+		"webpack",
+		"webpack 3",
+		"webpack-hot-server",
+		"react",
+		"react-hot-loader",
+		"babel",
+		"flow"
+	],
 	"private": true
 }
