@@ -18,6 +18,11 @@ render(
 /******************************************************************************/
 
 if (module.hot) {
+	// module.hot.accept('./reducer', () => {
+	// 	// redux store has a method replaceReducer
+	// 	store.replaceReducer(appReducer);
+	// });
+
 	module.hot.accept('./App.jsx', () => {
 		const NewApp = require('./App.jsx').default; // eslint-disable-line global-require
 
