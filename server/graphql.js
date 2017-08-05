@@ -82,23 +82,17 @@ app.use('/schema', (req, res) => {
 	Subscriptions Server
 *******************************************************************************/
 
-const server = app.listen(GRAPHQL_PORT, () => {
-	console.log(magenta(
-		`GraphQL: is running on 'http://${ROOT_DOMAIN}:${GRAPHQL_PORT}'`)
-	);
+// const pubsub = new PubSub();
+
+new SubscriptionServer({ execute, schema, subscribe }, {
+	server: () => app.listen(GRAPHQL_PORT, () => {
+		console.log(magenta(
+			`GraphQL: is running on 'http://${ROOT_DOMAIN}:${GRAPHQL_PORT}'`)
+		);
+	}),
+	onConnect(connection, webSocket) { // eslint-disable-line no-unused-vars
+		console.log('CONNECTION', connection);
+	},
 });
 
 /******************************************************************************/
-
-// const pubsub = new PubSub();
-
-function onConnect(connection, webSocket) { // eslint-disable-line no-unused-vars
-	console.log('CONNECTION', connection);
-}
-
-new SubscriptionServer({ execute, schema, subscribe }, { server, onConnect });
-
-/******************************************************************************/
-
-process.on('SIGINT', server.close);
-
