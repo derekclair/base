@@ -1,0 +1,8 @@
+/* @flow */
+
+export type Redux$Action = {
+	type: string,
+	payload: any,
+};
+
+export type Redux$Reducer = Function;
