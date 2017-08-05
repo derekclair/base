@@ -85,6 +85,7 @@
 		"webpack-hot-server",
 		"react",
 		"react-hot-loader",
+		"redux",
 		"graphql",
 		"graphql-subscriptions",
 		"apollo",
