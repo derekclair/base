@@ -4,7 +4,6 @@ const { blue } = require('chalk');
 const cors = require('cors');
 const express = require('express');
 const history = require('connect-history-api-fallback');
-const proxy = require('http-proxy-middleware');
 const webpack = require('webpack');
 const winston = require('winston');
 

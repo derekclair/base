@@ -81,6 +81,7 @@ module.exports = {
 			WARN,
 			'tab',
 			{
+				'SwitchCase': 1,
 				'MemberExpression': 1,
 				'VariableDeclarator': {
 					'var': 2,

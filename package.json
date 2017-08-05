@@ -57,7 +57,7 @@
 		"eslint-plugin-jsx-a11y": "^5.1.1",
 		"eslint-plugin-react": "^7.1.0",
 		"eslint-plugin-security": "^1.4.0",
-		"flow-bin": "^0.51.1",
+		"flow-bin": "^0.52.0",
 		"friendly-errors-webpack-plugin": "^1.6.1",
 		"progress-bar-webpack-plugin": "^1.10.0",
 		"webpack-bundle-analyzer": "^2.8.3",
