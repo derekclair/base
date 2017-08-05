@@ -1,1 +1,11 @@
 /* @flow */
+
+import type {
+	Redux$Action,
+	Redux$Reducer,
+} from '../client/types.js.flow';
+
+export type {
+	Redux$Action,
+	Redux$Reducer,
+};
