@@ -16,7 +16,7 @@ import express from 'express';
 import { magenta } from 'chalk';
 
 import schema from './schema';
-import postgres from './postgres.js';
+// import postgres from './postgres.js';
 
 /******************************************************************************/
 
@@ -40,7 +40,7 @@ app.use('/graphql', OpticsAgent.middleware());
 app.use('/graphql', graphqlExpress(req => ({
 	context: {
 		opticsContext: OpticsAgent.context(req),
-		postgres,
+		// postgres,
 	},
 	schema: OpticsAgent.instrumentSchema(schema),
 	allowUndefinedInResolve: true,

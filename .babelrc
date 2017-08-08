@@ -22,12 +22,13 @@
 				"spec": true
 			}
 		],
-		"inline-import-graphql-ast",
+		"inline-import-graphql-ast"
 	],
 	"parserOpts": {
 		"plugins": [
 			"jsx",
 			"flow"
 		]
-	}
+	},
+	"retainLines": true
 }
