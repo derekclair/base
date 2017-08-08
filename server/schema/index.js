@@ -13,7 +13,16 @@ import typeDefs from './schema.graphql';
 const resolvers = {
 	Query: {
 		messages: () => [{ id: 1 }],
-		user: id => ({ id }),
+		user(root, args, context) {
+			const { opticsContext, ...ctx } = context;
+
+			console.log('root', root);
+			console.log('context', ctx);
+
+			context.postgres(args.id);
+
+			return { id: 1 };
+		},
 	},
 	Mutation: {
 		upvoteMessage: id => ({ id }),

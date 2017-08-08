@@ -37,12 +37,19 @@ app.use('/graphql', bodyParser.json());
 
 app.use('/graphql', OpticsAgent.middleware());
 
+OpticsAgent.instrumentSchema(schema);
+
 app.use('/graphql', graphqlExpress(req => ({
+	rootValue: {
+		postgres: query => console.log('WHERE', query),
+	},
 	context: {
 		opticsContext: OpticsAgent.context(req),
 		// postgres,
+		postgres: query => console.log('WHERE', query),
+		userId: Math.floor(Math.random() * 3),
 	},
-	schema: OpticsAgent.instrumentSchema(schema),
+	schema,
 	allowUndefinedInResolve: true,
 	pretty: true,
 	formatError: error => ({

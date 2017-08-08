@@ -1,9 +1,9 @@
 {
 	"presets": [
 		"env",
-		"es2017",
 		"flow",
 		"react",
+		"es2017",
 		"stage-0"
 	],
 	"env": {
@@ -24,11 +24,5 @@
 		],
 		"inline-import-graphql-ast"
 	],
-	"parserOpts": {
-		"plugins": [
-			"jsx",
-			"flow"
-		]
-	},
 	"retainLines": true
 }

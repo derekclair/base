@@ -79,6 +79,7 @@ const CLIENT_CONFIG = {
 		}, {
 			test: /\.(graphql|gql)$/,
 			// test: /\.graphql$/,
+			exclude: /node_modules/,
 			loaders: [
 				'babel-loader',
 				'graphql-tag/loader',
