@@ -9,6 +9,9 @@ import {
 import { ApolloProvider } from 'react-apollo';
 
 import client from './client.js';
+import Query from './Query.jsx';
+
+/******************************************************************************/
 
 const Home = () => (<h1>Home</h1>);
 const NewsFeed = () => (<h1>News Feed</h1>);
@@ -23,9 +26,12 @@ const App = () => (
 					<Route exact path="/" component={Home} />
 					<Route path="/news" component={NewsFeed} />
 				</div>
+				<Query />
 			</div>
 		</Router>
 	</ApolloProvider>
 );
+
+/******************************************************************************/
 
 export default App;

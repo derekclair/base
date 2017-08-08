@@ -21,7 +21,8 @@
 			{
 				"spec": true
 			}
-		]
+		],
+		"inline-import-graphql-ast",
 	],
 	"parserOpts": {
 		"plugins": [

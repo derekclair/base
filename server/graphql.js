@@ -3,19 +3,19 @@
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 // import { PubSub } from 'graphql-subscriptions';
-// import OpticsAgent from 'optics-agent';
+import OpticsAgent from 'optics-agent';
 import {
 	execute,
 	subscribe,
 	printSchema,
 } from 'graphql';
 
-import express from 'express';
 import bodyParser from 'body-parser';
-// import cors from 'cors';
+import cors from 'cors';
+import express from 'express';
 import { magenta } from 'chalk';
 
-import schema from './schema.graphql';
+import schema from './schema';
 
 /******************************************************************************/
 
@@ -30,19 +30,17 @@ const GRAPHQL_PATH = '/subscriptions';
 
 const app = express();
 
-// app.use('*', cors({
-// 	// origin: `http://localhost:${GRAPHQL_PORT}`,
-// 	origin: 'http://localhost:3000',
-// }));
+app.use('*', cors({ origin: 'http://localhost:3000' }));
 
 app.use('/graphql', bodyParser.json());
 
-// app.use('/graphql', OpticsAgent.middleware());
+app.use('/graphql', OpticsAgent.middleware());
 
-app.use('/graphql', graphqlExpress(() => ({
+app.use('/graphql', graphqlExpress(req => ({
 	context: {
+		opticsContext: OpticsAgent.context(req),
 	},
-	schema,
+	schema: OpticsAgent.instrumentSchema(schema),
 	allowUndefinedInResolve: true,
 	pretty: true,
 	formatError: error => ({
@@ -51,8 +49,8 @@ app.use('/graphql', graphqlExpress(() => ({
 		stack: error.stack,
 		path: error.path,
 	}),
-	// validationRules?: ?Array < any >,
 	graphiql: true,
+	// validationRules: () => null,
 })));
 
 
@@ -73,8 +71,7 @@ app.use('/graphiql', graphiqlExpress({
 app.use('/schema', (req, res) => {
 	res.set('Content-Type', 'text/plain');
 	res.send(printSchema(schema));
-
-	console.log('app.use(schema)');
+	res.status(200);
 });
 
 
@@ -84,15 +81,18 @@ app.use('/schema', (req, res) => {
 
 // const pubsub = new PubSub();
 
-new SubscriptionServer({ execute, schema, subscribe }, {
-	server: () => app.listen(GRAPHQL_PORT, () => {
-		console.log(magenta(
-			`GraphQL: is running on 'http://${ROOT_DOMAIN}:${GRAPHQL_PORT}'`)
-		);
-	}),
-	onConnect(connection, webSocket) { // eslint-disable-line no-unused-vars
-		console.log('CONNECTION', connection);
-	},
-});
+const server = app.listen(GRAPHQL_PORT, () => console.log(magenta(
+	`GraphQL: is running on 'http://${ROOT_DOMAIN}:${GRAPHQL_PORT}'`)
+));
+
+new SubscriptionServer({ execute, schema, subscribe }, { server }); // eslint-disable-line no-new
 
 /******************************************************************************/
+
+function onShutdown() {
+	console.log(magenta('\nGraphQL: shutting down...')); // eslint-disable-line no-console
+	process.exit();
+}
+
+process.on('SIGTERM', onShutdown);
+process.on('SIGINT', onShutdown);

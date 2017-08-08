@@ -57,10 +57,11 @@ const CLIENT_CONFIG = {
 
 	// devtool: 'eval', // Babel transpiled code, as [eval]uated by the browser.
 	devtool: 'source-map', // Un-transpiled sourcecode.
-	// devtool: 'inline-source-map',
-	// devtool: 'cheap-module-source-map',
 
 	module: {
+		// rules: [
+		// 	{ test: /\.graphql/, loader: 'graphql-tag/loader' }
+		// ],
 		loaders: [{
 			test: /\.(js|jsx)$/,
 			loaders: [
@@ -77,9 +78,11 @@ const CLIENT_CONFIG = {
 			// 	loader: 'style!css'
 		}, {
 			test: /\.(graphql|gql)$/,
-			// include: paths.appSrc,
-			exclude: /node_modules/,
-			loader: 'graphql-tag/loader',
+			// test: /\.graphql$/,
+			loaders: [
+				'babel-loader',
+				'graphql-tag/loader',
+			],
 		}],
 	}, // END: module
 
@@ -114,7 +117,6 @@ const SERVER_CONFIG = {
 	devtool: 'source-map',
 
 	externals: fs.readdirSync('node_modules')
-		// .filter(x => !x.includes('.bin') && !x.includes('react-loadable'))
 		.filter(x => !x.includes('.bin'))
 		.reduce((obj, mod) => {
 			obj[mod] = `commonjs ${mod}`; // eslint-disable-line
@@ -124,7 +126,6 @@ const SERVER_CONFIG = {
 	module: {
 		loaders: [{
 			test: /\.(graphql|gql)$/,
-			// include: paths.appSrc,
 			exclude: /node_modules/,
 			loader: 'graphql-tag/loader',
 		}],
@@ -139,4 +140,7 @@ const SERVER_CONFIG = {
 
 /******************************************************************************/
 
-module.exports = [SERVER_CONFIG, CLIENT_CONFIG];
+module.exports = [
+	SERVER_CONFIG,
+	CLIENT_CONFIG,
+];

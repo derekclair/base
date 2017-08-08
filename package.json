@@ -8,15 +8,18 @@
 	},
 	"main": "main.js",
 	"scripts": {
-		"start": "node main.js --exec babel-node",
-		"start:inspect": "node --inspect main.js --exec babel-node",
+		"start": "source env.local.sh && nodemon --ext js,jsx,graphql --watch server --exec babel-node -- server",
+		"start:inspect": "source env.local.sh && nodemon --ext js,jsx,graphql --watch server --exec babel-node-debug -- server",
 		"build": "",
 		"lint": "eslint ."
 	},
 	"dependencies": {
+		"babel-cli": "^6.24.1",
 		"babel-core": "^6.25.0",
 		"babel-eslint": "^7.2.3",
 		"babel-loader": "^7.1.1",
+		"babel-plugin-inline-import": "^2.0.6",
+		"babel-plugin-inline-import-graphql-ast": "^2.0.0",
 		"babel-plugin-transform-async-to-generator": "^6.24.1",
 		"babel-plugin-transform-class-properties": "^6.24.1",
 		"babel-preset-env": "^1.6.0",
@@ -53,7 +56,6 @@
 		"subscriptions-transport-ws": "^0.8.1",
 		"webpack": "^3.3.0",
 		"webpack-hot-middleware": "^2.18.2",
-		"webpack-hot-server-middleware": "^0.1.0",
 		"webpack-node-externals": "^1.6.0",
 		"winston": "^2.3.1"
 	},
@@ -68,6 +70,7 @@
 		"eslint-plugin-security": "^1.4.0",
 		"flow-bin": "^0.51.1",
 		"friendly-errors-webpack-plugin": "^1.6.1",
+		"nodemon": "^1.11.0",
 		"progress-bar-webpack-plugin": "^1.10.0",
 		"webpack-bundle-analyzer": "^2.8.3",
 		"webpack-dev-middleware": "^1.11.0"
@@ -78,7 +81,6 @@
 		"boilerplate",
 		"webpack",
 		"webpack 3",
-		"webpack-hot-server",
 		"react",
 		"react-hot-loader",
 		"graphql",
