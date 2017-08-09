@@ -1,6 +1,6 @@
 {
 	"name": "custom-base",
-	"description": "Custom Webpack 3 client & server hot reload React starter app",
+	"description": "Custom Webpack 3 & HOT reloading React starter app",
 	"version": "0.1.0",
 	"engines": {
 		"node": ">=6.11.1 <=7.10.1",
@@ -8,8 +8,8 @@
 	},
 	"main": "main.js",
 	"scripts": {
-		"start": "source env.local.sh && nodemon server --ext js,jsx,graphql --watch server --exec babel-node",
-		"start:inspect": "source env.local.sh && nodemon --ext js,jsx,graphql --watch server --exec babel-node-debug -- server",
+		"start": "source env.local.sh && nodemon server --ext js,jsx,graphql --watch server --exec ./node_modules/.bin/babel-node",
+		"start:debug": "source env.local.sh && nodemon server --ext js,jsx,graphql --watch server --exec ./node_modules/.bin/babel-node-debug",
 		"build": "",
 		"lint": "eslint ."
 	},
@@ -22,7 +22,6 @@
 		"babel-core": "^6.25.0",
 		"babel-eslint": "^7.2.3",
 		"babel-loader": "^7.1.1",
-		"babel-plugin-inline-import": "^2.0.6",
 		"babel-plugin-inline-import-graphql-ast": "^2.0.0",
 		"babel-plugin-transform-async-to-generator": "^6.24.1",
 		"babel-plugin-transform-class-properties": "^6.24.1",
@@ -84,6 +83,7 @@
 	"repository": "git@github.com:basement-lab/custom-base.git",
 	"keywords": [
 		"boilerplate",
+		"express",
 		"webpack",
 		"webpack 3",
 		"react",
